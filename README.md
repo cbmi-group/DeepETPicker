@@ -194,6 +194,6 @@ If you use this code for your research, please cite our paper [DeepETPicker: Fas
   title={DeepETPicker: Fast and accurate 3D particle picking for cryo-electron tomography using weakly supervised deep learning},
   author={Guole Liu, Tongxin Niu, Mengxuan Qiu, Fei Sun, and Ge Yang},
   journal={bioaxiv},
-  year={2012}
+  year={2022}
 }
 ```
