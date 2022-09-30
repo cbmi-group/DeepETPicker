@@ -183,3 +183,16 @@ In practice, default parameters can give you a good enough result.
 - *Position Slider*
 	
 	You can scan through the volume in x, y and z directions by changing their values. For z-axis scanning, shortcut keys of Up/Down arrow can be used.
+	
+# Citation
+
+If you use this code for your research, please cite our paper [DeepETPicker: Fast and accurate 3D particle picking for cryo-electron tomography using weakly supervised deep learning]()
+
+```
+@article{DeepETPicker,
+  title={DeepETPicker: Fast and accurate 3D particle picking for cryo-electron tomography using weakly supervised deep learning},
+  author={Guole Liu, Tongxin Niu, Mengxuan Qiu, Fei Sun, and Ge Yang},
+  journal={bioaxiv},
+  year={2012}
+}
+```
