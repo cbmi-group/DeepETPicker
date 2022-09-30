@@ -186,7 +186,7 @@ In practice, default parameters can give you a good enough result.
 	
 # Citation
 
-If you use this code for your research, please cite our paper [DeepETPicker: Fast and accurate 3D particle picking for cryo-electron tomography using weakly supervised deep learning]()
+If you use this code for your research, please cite our paper [DeepETPicker: Fast and accurate 3D particle picking for cryo-electron tomography using weakly supervised deep learning]().
 
 ```
 @article{DeepETPicker,
