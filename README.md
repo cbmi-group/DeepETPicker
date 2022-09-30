@@ -102,7 +102,7 @@ The following steps are required in order to run DeepETPicker:
 - Input & Output
 
 	<div align=center>
-	<img src="images/Preprocessing.gif" width="50%"> 
+	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/images/Preprocessing.gif" width="50%"> 
 	</div>
 
 	Launch the graphical user interface of DeepETPicker. On the `Preprocessing` page, please set some key parameters as follows:
