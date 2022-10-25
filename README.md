@@ -52,7 +52,7 @@ The following steps are required in order to run DeepETPicker:
    ```bash
    ssh -p 50022 test@ip DeepETPicker
    ```
-	Here `ip` is the IP address of the server machine.
+	Here `ip` is the IP address of the server machine，password is `password`.
 
 
 ## **Particle picking tutorial**
