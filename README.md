@@ -54,7 +54,7 @@ The following steps are required in order to run DeepETPicker:
    ```
    - Connect to this server remotely and open DeepETPicker software via a client machine:
    ```bash
-   ssh -p 50022 test@ip DeepETPicker
+   ssh -X -p 50022 test@ip DeepETPicker
    ```
 	Here `ip` is the IP address of the server machine，password is `password`.
 
