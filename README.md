@@ -4,7 +4,7 @@ A deep learning based open-source software with a friendly user interface to pic
 
 [DeepETPicker: Fast and accurate 3D particle picking for cryo-electron tomography using weakly supervised deep learning]()
 
-Authors: Guole Liu, Tongxin Niu, Mengxuan Qiu, Fei Sun, and Ge Yang
+Authors: Guole Liu, Tongxin Niu, Mengxuan Qiu, Yun Zhu, Fei Sun, and Ge Yang
 
 **Note**: DeepETPicker is a Pytorch implementation. 
 
