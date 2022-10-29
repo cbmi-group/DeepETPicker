@@ -20,7 +20,7 @@ Authors: Guole Liu, Tongxin Niu, Mengxuan Qiu, Yun Zhu, Fei Sun, and Ge Yang
 The following steps are required in order to run DeepETPicker:
 1. Install [Docker](https://www.docker.com/)
 
-Note: docker engine version shuold be >= 19.03
+	Note: docker engine version shuold be >= 19.03
 
 2. Install [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) for GPU support.
 
