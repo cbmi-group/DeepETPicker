@@ -19,6 +19,9 @@ Authors: Guole Liu, Tongxin Niu, Mengxuan Qiu, Yun Zhu, Fei Sun, and Ge Yang
 
 The following steps are required in order to run DeepETPicker:
 1. Install [Docker](https://www.docker.com/)
+
+Note: docker engine version shuold be >= 19.03
+
 2. Install [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) for GPU support.
 
 3. Download Docker image of DeepETPicker.
@@ -42,6 +45,7 @@ The following steps are required in order to run DeepETPicker:
 
 - The option `--shm-size` is used to set the required size of shared momory of the docker containers.
 - The option `--mount` is used to mount a file or directory on the host machine into the Docker container, where `source` denotes host machine and  `target` denotes the container.
+
 
 5. The DeepETPicker can be used directly in this machine, and it also can be used by a machine in the same LAN.
    - Directly open DeepETPicker in this machine: 
