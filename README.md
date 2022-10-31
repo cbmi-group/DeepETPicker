@@ -47,6 +47,8 @@ The following steps are required in order to run DeepETPicker:
 - The option `--mount` is used to mount a file or directory on the host machine into the Docker container, where `source=‘/host_path/to/data’` denotes denotes the data directory really existed in host machine. `target=‘/container_path/to/data’` is the data directory where the directory `‘/host_path/to/data’` is mounted in the container. 
 
 	**Note: `‘/host_path/to/data’` should be replaced by the data directory real existed in host machine. For convenience, `‘/container_path/to/data’` can set the same as `‘/host_path/to/data’`**
+	<img width="715" alt="image" src="https://user-images.githubusercontent.com/16335327/198989143-4fe5a7f1-f96a-4282-9366-11093bc72024.png">
+
 
 
 5. The DeepETPicker can be used directly in this machine, and it also can be used by a machine in the same LAN.
