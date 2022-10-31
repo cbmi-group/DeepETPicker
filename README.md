@@ -56,6 +56,9 @@ The following steps are required in order to run DeepETPicker:
    # where the 'ip_address' of DeepETPicker container can be obtained as follows:
    docker inspect --format='{{.NetworkSettings.IPAddress}}' deepetpicker
    ```
+   <img width="702" alt="image" src="https://user-images.githubusercontent.com/16335327/198967756-3a409b6f-bc19-42cd-83ec-d4cb67776b58.png">
+
+   
    - Connect to this server remotely and open DeepETPicker software via a client machine:
    ```bash
    ssh -X -p 50022 test@ip DeepETPicker
