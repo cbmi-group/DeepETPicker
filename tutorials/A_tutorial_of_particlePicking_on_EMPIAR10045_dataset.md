@@ -87,7 +87,7 @@ In practice, default parameters can give you a good enough result.
 ### **Particle visualization and mantual picking**
 
 <div align=center>
-	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/images/Visualization.gif" width="90%"> 
+	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/images/EMPIAR_10045_GIF/Visualization.gif" width="90%"> 
 </div>
 
 - *Showing Tomogram*
