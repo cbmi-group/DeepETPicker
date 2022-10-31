@@ -6,7 +6,6 @@
 	Before launching the graphical user interface, we recommend creating a single folder to save inputs and outputs of DeepETpicker. Inside this base folder you should make a subfolder to store raw data. This raw_data folder should contain: 
   - tomograms(with extension .mrc or .rec)
   - coordinates file with the same name as tomograms except for extension. (with extension *.csv, *.coords or *.txt. Generally, *.coords is recoommand.).  
-
 	<br>
 
   The sample dataset of EMPIAR-10045 can be download in one of two ways:
