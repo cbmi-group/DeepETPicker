@@ -44,7 +44,7 @@ The following steps are required in order to run DeepETPicker:
 	```
 
 - The option `--shm-size` is used to set the required size of shared momory of the docker containers.
-- The option `--mount` is used to mount a file or directory on the host machine into the Docker container, where `source` denotes host machine and  `target` denotes the container.
+- The option `--mount` is used to mount a file or directory on the host machine into the Docker container, where `source` denotes host machine, and `/host_path/to/data` denotes the data path really existed in host machine. `target` denotes the container, and `/container_path/to/data` is the data path in the container that corresponding to the same path of `/host_path/to/data`.
 
 
 5. The DeepETPicker can be used directly in this machine, and it also can be used by a machine in the same LAN.
@@ -192,12 +192,12 @@ In practice, default parameters can give you a good enough result.
 	
 # Citation
 
-If you use this code for your research, please cite our paper [DeepETPicker: Fast and accurate 3D particle picking for cryo-electron tomography using weakly supervised deep learning]().
+If you use this code for your research, please cite our paper [DeepETPicker: Fast and accurate 3D particle picking for cryo-electron tomography using weakly supervised deep learning](https://github.com/cbmi-group/DeepETPicker).
 
 ```
 @article{DeepETPicker,
   title={DeepETPicker: Fast and accurate 3D particle picking for cryo-electron tomography using weakly supervised deep learning},
-  author={Guole Liu, Tongxin Niu, Mengxuan Qiu, Fei Sun, and Ge Yang},
+  author={Guole Liu, Tongxin Niu, Mengxuan Qiu, Yun Zhu, Fei Sun, and Ge Yang},
   journal={bioaxiv},
   year={2022}
 }
