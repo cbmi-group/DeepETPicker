@@ -39,20 +39,22 @@ The following steps are required in order to run DeepETPicker:
 			-e DISPLAY=unix$DISPLAY \
 			--name deepetpicker \
 			-p 50022:22 \
-			--mount type=bind,source=/host_path/to/data,target=/container_path/to/data \
+			--mount type=bind,source=‘/host_path/to/data’,target=‘/container_path/to/data’ \
 			lgl603/deepetpicker:latest
 	```
 
 - The option `--shm-size` is used to set the required size of shared momory of the docker containers.
-- The option `--mount` is used to mount a file or directory on the host machine into the Docker container, where `source` denotes host machine, and `/host_path/to/data` denotes the data directory really existed in host machine. `target` denotes the container, and `/container_path/to/data` is the data directory where the directory `/host_path/to/data` is mounted in the container. 
+- The option `--mount` is used to mount a file or directory on the host machine into the Docker container, where `source=‘/host_path/to/data’` denotes denotes the data directory really existed in host machine. `target=‘/container_path/to/data’` is the data directory where the directory `‘/host_path/to/data’` is mounted in the container. 
 
-	**Note: `/host_path/to/data` should be replaced by the data directory real existed in host machine.**
+	**Note: `‘/host_path/to/data’` should be replaced by the data directory real existed in host machine. For convenience, `‘/container_path/to/data’` can set the same as `‘/host_path/to/data’`**
 
 
 5. The DeepETPicker can be used directly in this machine, and it also can be used by a machine in the same LAN.
    - Directly open DeepETPicker in this machine: 
    ```bash
-   ssh -X test@172.17.0.2 DeepETPicker
+   ssh -X test@'ip_address' DeepETPicker
+   # where the 'ip_address' of DeepETPicker container can be obtained as follows:
+   docker inspect --format='{{.NetworkSettings.IPAddress}}' deepetpicker
    ```
    - Connect to this server remotely and open DeepETPicker software via a client machine:
    ```bash
