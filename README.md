@@ -47,6 +47,7 @@ The following steps are required in order to run DeepETPicker:
 - The option `--mount` is used to mount a file or directory on the host machine into the Docker container, where `source=‘/host_path/to/data’` denotes denotes the data directory really existed in host machine. `target=‘/container_path/to/data’` is the data directory where the directory `‘/host_path/to/data’` is mounted in the container. 
 
 	**Note: `‘/host_path/to/data’` should be replaced by the data directory real existed in host machine. For convenience, `‘/container_path/to/data’` can set the same as `‘/host_path/to/data’`**
+	<img width="960" alt="image" src="https://user-images.githubusercontent.com/16335327/198990001-b04fbd1e-c284-482a-81f9-c266fc957a42.png">
 
 
 5. The DeepETPicker can be used directly in this machine, and it also can be used by a machine in the same LAN.
@@ -68,6 +69,9 @@ The following steps are required in order to run DeepETPicker:
 `Installation time`: the size of Docker mirror of Deepetpicker is 7.21 GB, and the installation time depends on your network speed. When the network speed is fast enough, it can be configured within a few minutes.
 
 ## **Particle picking tutorial**
+
+Detailed tutorials for two sample datasets of [SHREC2021](https://github.com/cbmi-group/DeepETPicker/blob/main/tutorials/A_tutorial_of_particlePicking_on_SHREC2021_dataset.md) and [EMPIAR-10045](https://github.com/cbmi-group/DeepETPicker/blob/main/tutorials/A_tutorial_of_particlePicking_on_EMPIAR10045_dataset.md) are provided. Main steps of DeepETPicker includeds preprocessing, traning of DeepETPicker, inference of DeepETPicker, and particle visualization.
+
 ### **Preprocessing**
 - Data preparation
   
