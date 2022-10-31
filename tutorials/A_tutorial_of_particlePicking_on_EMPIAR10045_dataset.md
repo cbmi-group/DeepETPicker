@@ -1,4 +1,4 @@
-# **A tutorial of multiple-class particle picking on SHREC2021 dataset**
+# **A tutorial of single-class particle picking on EMPIAR-10045 dataset**
 ## **Preprocessing**
 
 - Data preparation
@@ -9,13 +9,14 @@
 
 	<br>
 
-  The sample dataset of SHREC_2021 can be download in one of two ways:
+  The sample dataset of EMPIAR-10045 can be download in one of two ways:
   - Baidu Netdisk Link: [https://pan.baidu.com/s/1aijM4IgGSRMwBvBk5XbBmw](https://pan.baidu.com/s/1aijM4IgGSRMwBvBk5XbBmw ); verification code: cbmi
   - Microsoft onedrive Link: [https://1drv.ms/u/s!AmcdnIXL3Vo4hWf05lhsQWZWWSV3?e=dCWvew](https://1drv.ms/u/s!AmcdnIXL3Vo4hWf05lhsQWZWWSV3?e=dCWvew); verification code: cbmi
 
 - Data structure
   
   The data should be organized as follows:
+	```
 	├── /base/path
 	│   ├── raw_data
 	│   │   ├── IS002_291013_005_iconmask2_norm_rot_cutZ.coords
@@ -36,7 +37,7 @@
 
 	Launch the graphical user interface of DeepETPicker. On the `Preprocessing` page, please set some key parameters as follows:
 	- `input`
-		- Dataset name: e.g. SHREC_2021_preprocess
+		- Dataset name: e.g. EMPIAR_10045_preprocess
 		- Base path: path to base folder
 		- Coords path:  path to raw_data folder 
 		- Coords format: .csv, .coords or .txt
@@ -59,7 +60,7 @@ In practice, default parameters can give you a good enough result.
 
 *Training parameter description:*
 
-- Dataset name: e.g. SHREC_2021_train
+- Dataset name: e.g. EMPIAR_10045_train
 - Train dataset ids: datasets used for training. You can click `Dataset list` to obain the dataset ids firstly.
 - Val dataset ids: datasets used for validation. You can click `Dataset list` to obain the dataset ids firstly.
 - Number of classes:  particle classes you want to pick
