@@ -20,7 +20,7 @@ Authors: Guole Liu, Tongxin Niu, Mengxuan Qiu, Yun Zhu, Fei Sun, and Ge Yang
 The following steps are required in order to run DeepETPicker:
 1. Install [Docker](https://www.docker.com/)
 
-	Note: docker engine version shuold be >= 19.03
+	Note: docker engine version shuold be >= 19.03. The size of Docker mirror of Deepetpicker is 7.21 GB, please ensure that there is enough memory space.
 
 2. Install [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) for GPU support.
 
@@ -58,6 +58,7 @@ The following steps are required in order to run DeepETPicker:
    ```
 	Here `ip` is the IP address of the server machine，password is `password`.
 
+`Installation time`: the size of Docker mirror of Deepetpicker is 7.21 GB, and the installation time depends on your network speed. When the network speed is fast enough, it can be configured within a few minutes.
 
 ## **Particle picking tutorial**
 ### **Preprocessing**
