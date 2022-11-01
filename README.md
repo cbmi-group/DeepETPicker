@@ -137,11 +137,15 @@ In practice, default parameters can give you a good enough result.
 *Training parameter description:*
 
 - Dataset name: e.g. SHREC_2021_train
-- Train dataset ids: datasets used for training. You can click `Dataset list` to obain the dataset ids firstly.
-- Val dataset ids: datasets used for validation. You can click `Dataset list` to obain the dataset ids firstly.
+- Dataset list: get the list of train/val tomograms. The first column denotes particle number, the second column denotes tomogram name, the third column denotes tomogram ids. If you have n tomograms, the ids will be {0, 1, 2, ..., n-1}.
+- Train dataset ids: tomograms used for training. You can click `Dataset list` to obain the dataset ids firstly. One or multiple tomograms can be used as training tomograms. But make sure that the `traning dataset ids` are selected from {0, 1, 2, ..., n-1}, where n is the total number of tomograms obtained from `Dataset list`. Here, we provides two ways to set dataset ids:
+  - 0, 2, ...: different tomogram ids are separated with a comma.
+  - 0-m: where the ids of {0, 1, 2, ..., m-1} will be selected. Note: this way only can be used for tomograms with continuous ids.
+- Val dataset ids: tomograms used for validation. You can click `Dataset list` to obain the dataset ids firstly. Note: only one tomogram can be selected as val dataset.
 - Number of classes:  particle classes you want to pick
 - Batch size: a number of samples processed before the model is updated. It is determined by your GPU memory, reducing this parameter might be helpful if you encounter out of memory error.
 - Patch size: the sizes of subtomogram. It needs to be a multiple of 8. It is recommended that this value is not less than 64, and the default value is 72.
+- Padding size: a hyperparameter of overlap-tile strategy. Usually, it can be from 6 to 12, and the default value is 12.
 - Learning rate:  the step size at each iteration while moving toward a minimum of a loss function.
 - Max epoch: total training epochs. The default value 60 is usually sufficient.
 - GPU id: the GPUs used for training, e.g. 0,1,2,3 denotes using GPUs of 0-4. You can run the following command to get the information of available GPUs: nvidia-smi.
