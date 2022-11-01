@@ -93,28 +93,17 @@ Detailed tutorials for two sample datasets of [SHREC2021](https://github.com/cbm
 	│   ├── raw_data
 	│   │   ├── tomo1.coords
 	│   │   └── tomo1.mrc
+        │   │   └── tomo2.coords
 	│   │   └── tomo2.mrc
 	│   │   └── tomo3.mrc
+	│   │   └── tomo4.mrc
 	│   │   └── ...
 	```
 
-	For above data, tomo1.mrc can be used as train/val dataset. tomo2.mrc, tomo3.mrc and tomo4.mrc are test dataset, as they have no matual annotation.
+	For above data, `tomo1.mrc` and `tomo2.mrc` can be used as train/val dataset, since they all have coordinate files (matual annotation). If a tomogram has no matual annotation (such as `tomo3.mrc`), it only can be used as test dataset.
 	
 	<br>
 
-	For the sample dataset of EMPAIR-10045, the data structure is as follows:
-	```
-	├── /base/path
-	│   ├── raw_data
-	│   │   ├── IS002_291013_005_iconmask2_norm_rot_cutZ.coords
-	│   │   └── IS002_291013_005_iconmask2_norm_rot_cutZ.mrc
-	│   │   └── IS002_291013_006_iconmask2_norm_rot_cutZ.mrc
-	│   │   └── IS002_291013_007_iconmask2_norm_rot_cutZ.mrc
-	│   │   └── IS002_291013_008_iconmask2_norm_rot_cutZ.mrc
-	│   │   └── IS002_291013_009_iconmask2_norm_rot_cutZ.mrc
-	│   │   └── IS002_291013_010_iconmask2_norm_rot_cutZ.mrc
-	│   │   └── IS002_291013_011_iconmask2_norm_rot_cutZ.mrc
-	``` 			
 
 - Input & Output
 
@@ -152,6 +141,7 @@ In practice, default parameters can give you a good enough result.
 - Val dataset ids: datasets used for validation. You can click `Dataset list` to obain the dataset ids firstly.
 - Number of classes:  particle classes you want to pick
 - Batch size: a number of samples processed before the model is updated. It is determined by your GPU memory, reducing this parameter might be helpful if you encounter out of memory error.
+- Patch size: the sizes of subtomogram. It needs to be a multiple of 8. It is recommended that this value is not less than 64, and the default value is 72.
 - Learning rate:  the step size at each iteration while moving toward a minimum of a loss function.
 - Max epoch: total training epochs. The default value 60 is usually sufficient.
 - GPU id: the GPUs used for training, e.g. 0,1,2,3 denotes using GPUs of 0-4. You can run the following command to get the information of available GPUs: nvidia-smi.
