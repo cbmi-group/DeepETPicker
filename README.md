@@ -93,7 +93,7 @@ Detailed tutorials for two sample datasets of [SHREC2021](https://github.com/cbm
 	│   ├── raw_data
 	│   │   ├── tomo1.coords
 	│   │   └── tomo1.mrc
-        │   │   └── tomo2.coords
+	│   │   └── tomo2.coords
 	│   │   └── tomo2.mrc
 	│   │   └── tomo3.mrc
 	│   │   └── tomo4.mrc
