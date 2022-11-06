@@ -206,7 +206,11 @@ The predicted coordinates with extension `*.coords` has four columns: `class_id,
 - *Position Slider*
 	
 	You can scan through the volume in x, y and z directions by changing their values. For z-axis scanning, shortcut keys of Up/Down arrow can be used.
-	
+
+# Troubleshooting
+
+If you encounter any problems during installation or use of DeepETPicker, please contact us by email [liuguole@ucas.ac.cn](liuguole@ucas.ac.cn). We will help you as soon as possible.
+
 # Citation
 
 If you use this code for your research, please cite our paper [DeepETPicker: Fast and accurate 3D particle picking for cryo-electron tomography using weakly supervised deep learning](https://github.com/cbmi-group/DeepETPicker).
