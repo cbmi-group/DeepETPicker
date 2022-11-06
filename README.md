@@ -39,14 +39,14 @@ The following steps are required in order to run DeepETPicker:
 			-e DISPLAY=unix$DISPLAY \
 			--name deepetpicker \
 			-p 50022:22 \
-			--mount type=bind,source=‘/host_path/to/data’,target=‘/container_path/to/data’ \
+			--mount type=bind,source='/host_path/to/data',target='/container_path/to/data' \
 			lgl603/deepetpicker:latest
 	```
 
 - The option `--shm-size` is used to set the required size of shared momory of the docker containers.
-- The option `--mount` is used to mount a file or directory on the host machine into the Docker container, where `source=‘/host_path/to/data’` denotes denotes the data directory really existed in host machine. `target=‘/container_path/to/data’` is the data directory where the directory `‘/host_path/to/data’` is mounted in the container. 
+- The option `--mount` is used to mount a file or directory on the host machine into the Docker container, where `source='/host_path/to/data'` denotes denotes the data directory really existed in host machine. `target='/container_path/to/data'` is the data directory where the directory `'/host_path/to/data'` is mounted in the container. 
 
-	**Note: `‘/host_path/to/data’` should be replaced by the data directory real existed in host machine. For convenience, `‘/container_path/to/data’` can set the same as `‘/host_path/to/data’`**
+	**Note: `'/host_path/to/data'` should be replaced by the data directory real existed in host machine. For convenience, `'/container_path/to/data'` can set the same as `'/host_path/to/data'`**
 	<img width="960" alt="image" src="https://user-images.githubusercontent.com/16335327/198990001-b04fbd1e-c284-482a-81f9-c266fc957a42.png">
 
 
@@ -128,6 +128,10 @@ Detailed tutorials for two sample datasets of [SHREC2021](https://github.com/cbm
 
 ### **Training of DeepETPicker**
 	
+<br>
+
+	Note: Before `Training of DeepETPicker`, please do `Preprocessing` first to ensure that the basic parameters required for training are provided.
+
 <div align=center>
 	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/images/Training.gif" width="80%"> 
 </div>

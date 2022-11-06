@@ -1,5 +1,5 @@
 # **A tutorial of multiple-class particle picking on SHREC2021 dataset**
-## **Preprocessing**
+## **Step 1. Preprocessing**
 
 - Data preparation
   
@@ -65,8 +65,12 @@
 		- Configs: if you click 'Save configs', it would be the path to the file which contains all the parameters filled in this page  
 
 
-### **Training of DeepETPicker**
+### **Step 2. Training of DeepETPicker**
 	
+<br>
+
+	Note: Before `Training of DeepETPicker`, please do `Step 1. Preprocessing` first to ensure that the basic parameters required for training are provided.
+
 <div align=center>
 	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/images/Training.gif" width="80%"> 
 </div>
@@ -91,7 +95,7 @@ In practice, default parameters can give you a good enough result.
 - GPU id: the GPUs used for training, e.g. 0,1,2,3 denotes using GPUs of 0-4. You can run the following command to get the information of available GPUs: nvidia-smi.
 - Save Configs: save the configs listed above. The saved configurations contains all the parameters filled in this page, which can be directly loaded via *`Load configs`* next time instead of filling them again.
 
-### **Inference of DeepETPicker**
+### **Step 3. Inference of DeepETPicker**
 	
 <div align=center>
 	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/images/Inference.gif" width="80%"> 
@@ -106,7 +110,10 @@ In practice, default parameters can give you a good enough result.
 - Patch size & Pad_size: tomogram is scanned with a specific stride S and a patch size of N in this stage, where `S = N - 2*Pad_size`.
 - GPU id: the GPUs used for inference, e.g. 0,1,2,3 denotes using GPUs of 0-4. You can run the following command to get the information of available GPUs: nvidia-smi.
 
-### **Particle visualization and mantual picking**
+
+
+
+### ** Step 4. Particle visualization and mantual picking**
 
 <div align=center>
 	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/images/Visualization.gif" width="90%"> 
