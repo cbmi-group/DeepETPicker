@@ -167,8 +167,16 @@ In practice, default parameters can give you a good enough result.
 
 - Train Configs: path to the configuration file which has been saved in the `Training` step
 - Networks weights: path to the model which has be generated in the `Training` step
-- Patch size & Pad_size: tomogram is scanned with a specific stride S and a patch size of N in this stage, where S = N - 2Pad_size.
+- Patch size & Pad_size: tomogram is scanned with a specific stride S and a patch size of N in this stage, where S = N - 2*Pad_size.
 - GPU id: the GPUs used for inference, e.g. 0,1,2,3 denotes using GPUs of 0-4. You can run the following command to get the information of available GPUs: nvidia-smi.
+
+*Coord format conversion*
+
+The predicted coordinates with extension `*.coords` has four columns: `class_id, x, y, z`. To facilitate users to perform the subsequent subtomogram averaging, format conversion of coordinate file is provided. 
+
+- Coords path: the path of coordinates data predicted by well-trained DeepETPicker.
+- Output format: three formats can be converted, including `*.box` for EMAN2, `*.star` for RELION, `*.coords` for RELION.
+
 
 ### **Particle visualization and mantual picking**
 
