@@ -12,10 +12,54 @@ Authors: Guole Liu, Tongxin Niu, Mengxuan Qiu, Yun Zhu, Fei Sun, and Ge Yang
 
 ### **Prerequisites**
 
-- Linux
+- Linux (Ubuntu 18.04.5 LTS)
 - NVIDIA GPU
 
 ### **Installation**
+
+#### **Option 1: Using conda**
+
+The following instructions assume that `pip` and `anaconda` or `miniconda` are available. In case you have a old deepetpicker environment installed, first remove the old one with:
+
+```bash
+conda env remove --name deepetpicker
+```
+
+The first step is to crate a new conda virtual environment:
+
+```bash
+conda create -n deepetpicker -c conda-forge python=3.8.3 -y 
+```
+
+Activate the environment:
+
+```bash
+conda activate deepetpicker
+```
+
+To download the codes, please do:
+```
+git clone https://github.com/cbmi-group/DeepETPicker
+cd DeepETPicker
+```
+
+Next, install a custom pytorch and relative packages needed by DeepETPicker:
+
+```bash
+conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch -y
+
+pip install -r requirement.txt
+```
+
+To run the DeepETpicker, please do:
+
+```bash
+python /path/to/deepetpicker/main.py
+```
+
+Note: `/path/to/deepetpicker` is the corresponding directory where the code located.
+
+#### **Option 2：Using docker**
 
 The following steps are required in order to run DeepETPicker:
 1. Install [Docker](https://www.docker.com/)

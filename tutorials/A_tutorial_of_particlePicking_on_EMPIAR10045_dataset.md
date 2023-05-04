@@ -34,7 +34,7 @@
 - Input & Output
 
 	<div align=center>
-	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/images/EMPIAR_10045_GIF/Preprocessing.gif" width="80%"> 
+	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/tutorials/images/EMPIAR_10045_GIF/Preprocessing.gif" width="80%"> 
 	</div>
 
 	Launch the graphical user interface of DeepETPicker. On the `Preprocessing` page, please set some key parameters as follows:
@@ -59,7 +59,7 @@
 	Note: Before `Training of DeepETPicker`, please do `Step 1. Preprocessing` first to ensure that the basic parameters required for training are provided.
 
 <div align=center>
-	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/images/EMPIAR_10045_GIF/Training.gif" width="80%"> 
+	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/tutorials/images/EMPIAR_10045_GIF/Training.gif" width="80%"> 
 </div>
 
 In practice, default parameters can give you a good enough result.
@@ -84,7 +84,7 @@ In practice, default parameters can give you a good enough result.
 ### **Step 3. Inference of DeepETPicker**
 	
 <div align=center>
-	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/images/EMPIAR_10045_GIF/Inference.gif" width="80%"> 
+	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/tutorials/images/EMPIAR_10045_GIF/Inference.gif" width="80%"> 
 </div>
 	
 In practice, default parameters can give you a good enough result.
@@ -99,7 +99,7 @@ In practice, default parameters can give you a good enough result.
 ### **Step 4. Particle visualization and mantual picking**
 
 <div align=center>
-	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/images/EMPIAR_10045_GIF/Visualization.gif" width="90%"> 
+	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/tutorials/images/EMPIAR_10045_GIF/Visualization.gif" width="90%"> 
 </div>
 
 - *Showing Tomogram*
