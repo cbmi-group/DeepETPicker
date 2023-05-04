@@ -152,7 +152,7 @@ Detailed tutorials for two sample datasets of [SHREC2021](https://github.com/cbm
 - Input & Output
 
 	<div align=center>
-	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/images/Preprocessing.gif" width="80%"> 
+	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/utils/images/Preprocessing.gif" width="80%"> 
 	</div>
 
 	Launch the graphical user interface of DeepETPicker. On the `Preprocessing` page, please set some key parameters as follows:
@@ -177,7 +177,7 @@ Detailed tutorials for two sample datasets of [SHREC2021](https://github.com/cbm
 	Note: Before `Training of DeepETPicker`, please do `Preprocessing` first to ensure that the basic parameters required for training are provided.
 
 <div align=center>
-	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/images/Training.gif" width="80%"> 
+	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/utils/images/Training.gif" width="80%"> 
 </div>
 
 In practice, default parameters can give you a good enough result.
@@ -202,7 +202,7 @@ In practice, default parameters can give you a good enough result.
 ### **Inference of DeepETPicker**
 	
 <div align=center>
-	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/images/Inference.gif" width="80%"> 
+	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/utils/images/Inference.gif" width="80%"> 
 </div>
 	
 In practice, default parameters can give you a good enough result.
@@ -225,7 +225,7 @@ The predicted coordinates with extension `*.coords` has four columns: `class_id,
 ### **Particle visualization and mantual picking**
 
 <div align=center>
-	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/images/Visualization.gif" width="90%"> 
+	<img src="https://github.com/cbmi-group/DeepETPicker/blob/main/utils/images/Visualization.gif" width="90%"> 
 </div>
 
 - *Showing Tomogram*
