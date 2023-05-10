@@ -12,7 +12,7 @@ Authors: Guole Liu, Tongxin Niu, Mengxuan Qiu, Yun Zhu, Fei Sun, and Ge Yang
 
 ### **Prerequisites**
 
-- Linux (Ubuntu 18.04.5 LTS)
+- Linux (Ubuntu 18.04.5 LTS； CentOS)
 - NVIDIA GPU
 
 ### **Installation**
@@ -57,7 +57,7 @@ To use GUI packages with Linux, you will need to install the following extended 
 	sudo yum install -y mesa-libGL libXext libSM libXrender fontconfig xcb-util-wm xcb-util-image xcb-util-keysyms xcb-util-renderutil libxkbcommon-x11
 	```
 
-2. For Ubuntu, to install packages, please do:
+2. For `Ubuntu`, to install packages, please do:
 	```bash
 	sudo apt-get install -y libgl1-mesa-glx libglib2.0-dev libsm6 libxrender1 libfontconfig1 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-shape0 libxcb-xinerama0 libxcb-xkb1 libxkbcommon-x11-dev libdbus-1-3
 	```
