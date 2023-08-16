@@ -28,7 +28,6 @@ class Coord_to_Label():
         self.label_type = label_type
         self.label_diameter = [int(i) for i in label_diameter.split(',')]
 
-        self.tomo_file = glob(self.tomo_path + "/*%s" % self.tomo_format)[0]
         if 'ocp' in self.label_type.lower():
             self.label_path = os.path.join(self.base_path, self.label_type)
         else:
@@ -40,6 +39,7 @@ class Coord_to_Label():
         self.names = [i + self.tomo_format for i in self.dir_list]  # if self.tomo_format not in i else i
 
     def single_handle(self, i):
+        self.tomo_file = f"{self.tomo_path}/{self.names[i]}"
         data_file = mrcfile.open(self.tomo_file, permissive=True)
         print(os.path.join(self.label_path, self.names[i]))
         label_file = mrcfile.new(os.path.join(self.label_path, self.names[i]),
