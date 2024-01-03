@@ -10,7 +10,7 @@ _rlnCoordinateX #1
 _rlnCoordinateY #2
 _rlnCoordinateZ #3"""
 
-    data = np.round(data, 1).astype(np.str)
+    data = np.round(data, 1).astype(str)
 
     with open(save_path, 'w') as f:
         f.writelines(string + '\n')

@@ -92,14 +92,14 @@ def test_func(args, stdout=None):
                                 out_dir = '/'.join(args.checkpoints.split('/')[:-2]) + f'/{args.out_name}'
                                 os.makedirs(os.path.join(out_dir, 'Coords_withArea'), exist_ok=True)
                                 np.savetxt(os.path.join(out_dir, 'Coords_withArea', dir_name + '.coords'),
-                                           centroids.astype(np.float),
+                                           centroids.astype(float),
                                            fmt='%s',
                                            delimiter='\t')
 
                                 coords = centroids[:, 0:4]
                                 os.makedirs(os.path.join(out_dir, 'Coords_All'), exist_ok=True)
                                 np.savetxt(os.path.join(out_dir, 'Coords_All', dir_name + '.coords'),
-                                           coords.astype(np.int),
+                                           coords.astype(int),
                                            fmt='%s',
                                            delimiter='\t')
 

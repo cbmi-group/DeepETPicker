@@ -1154,15 +1154,19 @@ class Stats(QtWidgets.QMainWindow):
             self.test_clsId = int(self.test_clsId)
             coords_list = [i for i in os.listdir(self.test_coordPath) if i.endswith('.coords')]
             for coord_name in coords_list:
-                data = np.loadtxt(os.path.join(self.test_coordPath, coord_name),
+                try:
+                    data = np.loadtxt(os.path.join(self.test_coordPath, coord_name),
                                   delimiter='\t').astype(np.float)
-                cls_ids = np.unique(data[:, 0]).astype(np.int)
+                except:
+                    data = np.loadtxt(os.path.join(self.test_coordPath, coord_name),
+                                      delimiter='\t').astype(np.float32)
+                cls_ids = np.unique(data[:, 0]).astype(int)
                 if self.test_clsId not in cls_ids:
                     print(self.test_clsId, cls_ids)
                     QMessageBox.critical(self, 'Error', 'Unknown class id.')
                     return 0
                 else:
-                    data = data[data[:, 0].astype(np.int) == self.test_clsId][:, 1:]
+                    data = data[data[:, 0].astype(int) == self.test_clsId][:, 1:]
                     if self.test_coord_format == '.star':
                         save_path = f"{self.test_coordPath}_cls{self.test_clsId}_star/{coord_name.replace('.coords', '.star')}"
                         os.makedirs(f"{self.test_coordPath}_cls{self.test_clsId}_star", exist_ok=True)
@@ -1544,7 +1548,10 @@ class Stats(QtWidgets.QMainWindow):
             self.tomo_data = np.random.randn(200, 400, 400)
         else:
             with mrcfile.open(tomo_path, permissive=True) as tomo:
-                self.tomo_data = np.array(tomo.data).astype(np.float32)
+                try:
+                    self.tomo_data = np.array(tomo.data).astype(np.float)
+                except:
+                    self.tomo_data = np.array(tomo.data).astype(np.float32)
                 self.tomo_data = stretch(self.tomo_data)
         z_max, y_max, x_max = self.tomo_data.shape
 
@@ -1677,7 +1684,7 @@ class Stats(QtWidgets.QMainWindow):
             xyz = [self.mpick_clsId, self.x, self.y, self.z]
             if self.mpick_coords_np.shape[0] > 0:
                 dist = np.linalg.norm(
-                    self.mpick_coords_np[:, -3:] - np.array(xyz).reshape(1, -1)[:, -3:].astype(np.float), ord=2, axis=1)
+                    self.mpick_coords_np[:, -3:] - np.array(xyz).reshape(1, -1)[:, -3:].astype(float), ord=2, axis=1)
                 dist_idx = (dist < self.mpick_circle_diameter // 2)
                 if len(np.nonzero(dist_idx)[0]) >= 1:
                     temp_idx = np.nonzero(dist_idx)[0].tolist()
@@ -1779,7 +1786,11 @@ class Stats(QtWidgets.QMainWindow):
             self.ui.edit_show_tomo.setPlainText(self.show_tomoFile)
             self.c2l_show_info(f"Showing tomo file: {self.show_tomoFile}")
             with mrcfile.open(self.show_tomoFile, permissive=True) as tomo:
-                self.tomo_data = np.array(tomo.data).astype(np.float32)
+                try:
+                    self.tomo_data = np.array(tomo.data).astype(np.float)
+                except:
+                    self.tomo_data = np.array(tomo.data).astype(np.float32)
+
                 self.tomo_data = stretch(self.tomo_data)
                 self.tomo_shape = self.tomo_data.shape
                 self.tomo_orig = self.tomo_data

@@ -11,7 +11,7 @@ def gaussian3D(shape, sigma=1):
     z, y, x = np.ogrid[-l:l + 1, -m:m + 1, -n:n + 1]
     sigma = (sigma - 1.) / 2.
     h = np.exp(-(x * x + y * y + z * z) / (2 * sigma * sigma))
-    # h[h < np.finfo(np.float32).eps * h.max()] = 0
+    # h[h < np.finfo(float).eps * h.max()] = 0
     return h
 
 
@@ -49,10 +49,13 @@ class Coord_to_Label():
                                       header=None).to_numpy()
 
         # template = np.fromfunction(lambda i, j, k: (i - r) * (i - r) + (j - r) * (j - r) + (k - r) * (k - r) <= r * r,
-        #                            (2 * r + 1, 2 * r + 1, 2 * r + 1), dtype=int).astype(np.int)
+        #                            (2 * r + 1, 2 * r + 1, 2 * r + 1), dtype=int).astype(int)
 
         z_max, y_max, x_max = data_file.data.shape
-        label_data = np.zeros(data_file.data.shape, dtype=np.float32)
+        try:
+            label_data = np.zeros(data_file.data.shape, dtype=np.float)
+        except:
+            label_data = np.zeros(data_file.data.shape, dtype=np.float32)
 
         for pos_idx, a_pos in enumerate(label_positions):
             if self.num_cls == 1 and len(a_pos) == 3:
@@ -171,7 +174,10 @@ class Coord_to_Label_v1():
             template = gaussian3D((dim, dim, dim), dim)
 
             z_max, y_max, x_max = data_file.data.shape
-            label_data = np.zeros(data_file.data.shape, dtype=np.float32)
+            try:
+                label_data = np.zeros(data_file.data.shape, dtype=np.float)
+            except:
+                label_data = np.zeros(data_file.data.shape, dtype=np.float32)
 
             for pos_idx, a_pos in enumerate(label_positions):
                 if self.num_cls == 1 and len(a_pos) == 3:

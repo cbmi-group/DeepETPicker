@@ -171,10 +171,10 @@ def add_transparency(img, label, factor, color, thresh):
 
     img = img[:, :, np.newaxis]
     img1 = img.repeat([3], axis=2)
-    img1[label.astype(np.int) == 1] = (255, 0, 0)
-    img1[label.astype(np.int) == 2] = (0, 255, 0)
-    img1[label.astype(np.int) == 3] = (0, 0, 255)
-    img1[label.astype(np.int) == 4] = (0, 255, 255)
+    img1[label.astype(int) == 1] = (255, 0, 0)
+    img1[label.astype(int) == 2] = (0, 255, 0)
+    img1[label.astype(int) == 3] = (0, 0, 255)
+    img1[label.astype(int) == 4] = (0, 255, 255)
     # img1[label > factor] = color
     c_b, c_g, c_r = cv2.split(img1)
     mask = np.where(label > factor, 1, 0)

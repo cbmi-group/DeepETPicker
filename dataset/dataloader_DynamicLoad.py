@@ -160,7 +160,10 @@ class Dataset_ClsBased(data.Dataset):
                         shape = gm.data.shape
                         self.data_shape = gm.data.shape
                         shape_pad = [i + 2 * pad_size for i in shape]
-                        temp = np.zeros(shape_pad).astype(np.float32)
+                        try:
+                            temp = np.zeros(shape_pad).astype(np.float)
+                        except:
+                            temp = np.zeros(shape_pad).astype(np.float32)
                         temp[pad_size:shape_pad[0] - pad_size,
                         pad_size:shape_pad[1] - pad_size,
                         pad_size:shape_pad[2] - pad_size] = gm.data
@@ -181,7 +184,10 @@ class Dataset_ClsBased(data.Dataset):
                     self.data_shape = gm.shape
                     shape_pad = [shape[0]]
                     shape_pad.extend([i + 2 * pad_size for i in shape[1:]])
-                    temp = np.zeros(shape_pad).astype(np.float32)
+                    try:
+                        temp = np.zeros(shape_pad).astype(np.float)
+                    except:
+                        temp = np.zeros(shape_pad).astype(np.float32)
                     temp[:, pad_size:shape_pad[1] - pad_size,
                     pad_size:shape_pad[2] - pad_size,
                     pad_size:shape_pad[3] - pad_size] = gm
@@ -211,7 +217,11 @@ class Dataset_ClsBased(data.Dataset):
                                       permissive=True) as cm:
                         shape = cm.data.shape
                         shape_pad = [i + 2 * pad_size if i > pad_size else i for i in shape]
-                        temp = np.zeros(shape_pad).astype(np.float32)
+                        try:
+                            temp = np.zeros(shape_pad).astype(np.float)
+                        except:
+                            temp = np.zeros(shape_pad).astype(np.float32)
+
                         if len(shape) == 3:
                             temp[pad_size:shape_pad[-3] - pad_size,
                             pad_size:shape_pad[-2] - pad_size,
@@ -245,7 +255,10 @@ class Dataset_ClsBased(data.Dataset):
                                       permissive=True) as cm:
                         shape = cm.data.shape
                         shape_pad = [i + 2 * pad_size for i in shape]
-                        temp = np.zeros(shape_pad).astype(np.float32)
+                        try:
+                            temp = np.zeros(shape_pad).astype(np.float)
+                        except:
+                            temp = np.zeros(shape_pad).astype(np.float32)
                         temp[pad_size:shape_pad[0] - pad_size,
                         pad_size:shape_pad[1] - pad_size,
                         pad_size:shape_pad[2] - pad_size] = cm.data
@@ -435,7 +448,11 @@ class Dataset_ClsBased(data.Dataset):
                         point[0] - self.shift:point[0] + self.shift]
         # print(img.shape, label.shape)
         img = np.array(img)
-        label = np.array(label).astype(np.float32)
+        try:
+            label = np.array(label).astype(np.float)
+        except:
+            label = np.array(label).astype(np.float32)
+
         if self.num_class > 1 and len(label.shape) == 3:
             label = multiclass_label(label,
                                      num_classes=self.num_class,
@@ -447,7 +464,11 @@ class Dataset_ClsBased(data.Dataset):
                 label = label.reshape(-1, self.shift * 2, self.shift * 2, self.shift * 2)
 
         if self.use_paf:
-            paf_label = np.array(paf_label).astype(np.float32).reshape(-1, self.shift * 2, self.shift * 2, self.shift * 2)
+            try:
+                paf_label = np.array(paf_label).astype(np.float).reshape(-1, self.shift * 2, self.shift * 2, self.shift * 2)
+            except:
+                paf_label = np.array(paf_label).astype(np.float32).reshape(-1, self.shift * 2, self.shift * 2, self.shift * 2)
+
             label = np.concatenate([label, paf_label], axis=0)
 
         if self.use_CL_DA:

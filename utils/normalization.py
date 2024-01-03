@@ -28,7 +28,10 @@ class InputNorm():
         dir_name = self.dir_list[i]
         with mrcfile.open(os.path.join(self.tomo_path, dir_name),
                           permissive=True) as gm:
-            data = np.array(gm.data).astype(np.float32)
+            try:
+                data = np.array(gm.data).astype(np.float)
+            except:
+                data = np.array(gm.data).astype(np.float32)
             print(data.shape)
             if self.norm_type == 'standardization':
                 data -= data.mean()
@@ -39,7 +42,11 @@ class InputNorm():
 
             reconstruction_norm = mrcfile.new(
                 os.path.join(self.save_dir, dir_name), overwrite=True)
-            reconstruction_norm.set_data(data.astype(np.float32))
+            try:
+                reconstruction_norm.set_data(data.astype(np.float32))
+            except:
+                reconstruction_norm.set_data(data.astype(np.float))
+
             reconstruction_norm.close()
             print('%d/%d finished.' % (i + 1, len(self.dir_list)))
 

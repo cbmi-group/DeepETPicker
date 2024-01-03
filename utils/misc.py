@@ -33,7 +33,11 @@ def flatten(tensor):
 def combine(data, shape, block_size=72, pad_size=18, reverse=False):
     if reverse:
         shape = shape[::-1]
-    union_data = np.zeros(shape, dtype=np.float32)
+    try:
+        union_data = np.zeros(shape, dtype=np.float)
+    except:
+        union_data = np.zeros(shape, dtype=np.float32)
+
     step_size = block_size - 2 * pad_size
     block_size = step_size
 
@@ -266,7 +270,11 @@ def cal_metrics_MultiCls(pred, gt, occupancy_map, cfg, args, pad_size, dir_name,
         indexs = []
         areas = np.array(pred)[:, 4]
         pred = np.array(pred)
-        pred_final_ = pred[:, 1:4].astype(np.float32)
+        try:
+            pred_final_ = pred[:, 1:4].astype(np.float)
+        except:
+            pred_final_ = pred[:, 1:4].astype(np.float32)
+
         for idx, item in enumerate(pred_final_):
             if idx in indexs:
                 continue
@@ -458,7 +466,11 @@ def cal_metrics_MultiCls(pred, gt, occupancy_map, cfg, args, pad_size, dir_name,
         df = pd.DataFrame(localization_res)
         df.to_csv(f'{save_dir}/{dir_name}/loc_cls/localization_res_padsize{pad_size}_segThresh{args.threshold}.csv')
 
-        temp = np.array(df.to_numpy()[0, 1:]).astype(np.float32)
+        try:
+            temp = np.array(df.to_numpy()[0, 1:]).astype(np.float)
+        except:
+            temp = np.array(df.to_numpy()[0, 1:]).astype(np.float32)
+
         tmp = "|"
         for idx, item in enumerate(temp):
             if idx <= (5 if not args.skip_vesicles else 4):
@@ -476,7 +488,7 @@ def cal_metrics_MultiCls(pred, gt, occupancy_map, cfg, args, pad_size, dir_name,
         loc_tmp = tmp
 
         # 提取classification_stats数据并保存
-        # f1_scores = np.array(list(confusion_matrix.class_stat["F1"].values())[1:]).astype(np.float32)
+        # f1_scores = np.array(list(confusion_matrix.class_stat["F1"].values())[1:]).astype(float)
         f1_scores = confusion_matrix.class_stat["F1"]
         tmp = "|"
         f1_sum = 0
@@ -521,17 +533,17 @@ def cal_metrics_MultiCls(pred, gt, occupancy_map, cfg, args, pad_size, dir_name,
         xticks1 = xticks - width
 
         if len(xticks) == len(classes):
-            y1 = np.array([0 if i is 'None' else i for i in list(confusion_matrix.class_stat["PPV"].values())[1:]]).astype(np.float32)  # Precision
+            y1 = np.array([0 if i is 'None' else i for i in list(confusion_matrix.class_stat["PPV"].values())[1:]]).astype(float)  # Precision
             plt.bar(xticks1, y1, width=width, color='r', label='Precision')
             plt.grid(alpha=0.4)
 
             xticks2 = xticks
-            y2 = np.array([0 if i is 'None' else i for i in list(confusion_matrix.class_stat["TPR"].values())[1:]]).astype(np.float32)  # Recall
+            y2 = np.array([0 if i is 'None' else i for i in list(confusion_matrix.class_stat["TPR"].values())[1:]]).astype(float)  # Recall
             plt.bar(xticks2, y2, width=width, color='g', label='Recall')
             plt.grid(alpha=0.4)
 
             xticks3 = xticks + width
-            y3 = np.array([0 if i is 'None' else i for i in list(confusion_matrix.class_stat["F1"].values())[1:]]).astype(np.float32)
+            y3 = np.array([0 if i is 'None' else i for i in list(confusion_matrix.class_stat["F1"].values())[1:]]).astype(float)
             plt.bar(xticks3, y3, width=width, color='b', label='F1-score')
             plt.xticks(xticks, classes)
             # plt.ylim([0, 1.15])
@@ -624,10 +636,10 @@ def cal_metrics_MultiCls(pred, gt, occupancy_map, cfg, args, pad_size, dir_name,
                 pred_sel, delimiter="\t", newline="\n", fmt="%s")
             np.savetxt(
                 f'{save_dir}/{dir_name}/particle_locations/coords_padsize{pad_size}_thresh{args.threshold}_area{ratio:.2f}.coords',
-                pred_sel[:, :4].astype(np.int), delimiter="\t", newline="\n", fmt="%s")
+                pred_sel[:, :4].astype(int), delimiter="\t", newline="\n", fmt="%s")
             np.savetxt(
                 f'{save_dir}/{dir_name}/particle_locations/coords_padsize{pad_size}_thresh{args.threshold}_area{ratio:.2f}_eval.txt',
-                pred_sel[:, :4].astype(np.int), delimiter="\t", newline="\n", fmt="%s")
+                pred_sel[:, :4].astype(int), delimiter="\t", newline="\n", fmt="%s")
 
         res = np.array(res)
         np.savetxt(
@@ -660,7 +672,7 @@ def cal_metrics_MultiCls(pred, gt, occupancy_map, cfg, args, pad_size, dir_name,
 #
 def coord_duplication(pred, mini_dist):
     mini_dist = int(float(mini_dist))
-    pred_ = pred[:, :3].astype(np.float32)
+    pred_ = pred[:, :3].astype(float)
     scores = pred[:, 3]
     indexs = []
     if pred_.shape[0] > 0:
@@ -685,7 +697,7 @@ def de_dup(pred, args):
     indexs = []
     areas = np.array(pred)[:, 4]
     pred = np.array(pred)
-    pred_final_ = pred[:, 1:4].astype(np.float32)
+    pred_final_ = pred[:, 1:4].astype(float)
     for idx, item in enumerate(pred_final_):
         if idx in indexs:
             continue

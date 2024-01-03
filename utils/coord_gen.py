@@ -21,7 +21,10 @@ def coords_gen(coord_path, coord_format, base_dir):
         with open(os.path.join(coord_path, dir), 'r') as f:
             for idx, item in enumerate(f):
                 data.append(item.rstrip('\n').split())
-        data = np.array(data).astype(np.float).astype(int)
+        try:
+            data = np.array(data).astype(np.float).astype(int)
+        except:
+            data = np.array(data).astype(np.float32).astype(int)
 
         np.savetxt(os.path.join(base_dir, "coords", dir),
                    data, delimiter='\t', newline="\n", fmt="%s")
@@ -40,7 +43,10 @@ def coords_gen(coord_path, coord_format, base_dir):
 
     # gen num_name.csv
     num_name = np.array([num_all]).transpose()
-    df = pd.DataFrame(num_name).astype(float)
+    try:
+        df = pd.DataFrame(num_name).astype(np.float)
+    except:
+        df = pd.DataFrame(num_name).astype(np.float32)
     df['dir_names'] = np.array([dir_names]).transpose()
     df['idx'] = np.arange(len(dir_names)).reshape(-1, 1)
     df.to_csv(os.path.join(base_dir, "coords", "num_name.csv"), sep='\t', header=False, index=False)
