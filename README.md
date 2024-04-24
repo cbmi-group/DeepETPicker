@@ -104,11 +104,11 @@ The following steps are required in order to run DeepETPicker:
 - The option `--shm-size` is used to set the required size of shared momory of the docker containers.
 - The option `--mount` is used to mount a file or directory on the host machine into the Docker container, where `source='/host_path/to/data'` denotes denotes the data directory really existed in host machine. `target='/container_path/to/data'` is the data directory where the directory `'/host_path/to/data'` is mounted in the container. 
 
-	**Note: `'/host_path/to/data'` should be replaced by the data directory real existed in host machine. For convenience, `'/container_path/to/data'` can set the same as `'/host_path/to/data'`**
+	**Note: `'/host_path/to/data'` should be writable by running bash command `chmod -R 777 '/host_path/to/data'`. `'/host_path/to/data'` should be replaced by the data directory real existed in host machine. For convenience, `'/container_path/to/data'` can set the same as `'/host_path/to/data'`**
 	<img width="960" alt="image" src="https://user-images.githubusercontent.com/16335327/198990001-b04fbd1e-c284-482a-81f9-c266fc957a42.png">
 
 
-5. The DeepETPicker can be used directly in this machine, and it also can be used by a machine in the same LAN.
+1. The DeepETPicker can be used directly in this machine, and it also can be used by a machine in the same LAN.
    - Directly open DeepETPicker in this machine: 
    ```bash
    ssh -X test@'ip_address' DeepETPicker
