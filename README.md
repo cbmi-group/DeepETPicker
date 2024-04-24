@@ -2,9 +2,8 @@
 
 A deep learning based open-source software with a friendly user interface to pick 3D particles rapidly and accurately from cryo-electron tomograms. With the advantages of weak labels, lightweight architecture and GPU-accelerated pooling operations, the cost of annotations and the time of computational inference are significantly reduced while the accuracy is greatly improved by applying a Gaussian-type mask and using a customized architecture design.
 
-[DeepETPicker: Fast and accurate 3D particle picking for cryo-electron tomography using weakly supervised deep learning]()
+[Guole Liu, Tongxin Niu, Mengxuan Qiu, Yun Zhu, Fei Sun, and Ge Yang, “DeepETPicker: Fast and accurate 3D particle picking for cryo-electron tomography using weakly supervised deep learning,” Nature Communications, vol. 15, no. 1, pp. 2090, 2024.](https://www.nature.com/articles/s41467-024-46041-0)
 
-Authors: Guole Liu, Tongxin Niu, Mengxuan Qiu, Yun Zhu, Fei Sun, and Ge Yang
 
 **Note**: DeepETPicker is a Pytorch implementation. 
 
