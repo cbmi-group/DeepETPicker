@@ -3,6 +3,13 @@ In addition to the GUI version of DeepETPicker, we also provide a non-GUI versio
 
 Note: If you are not familiar with python and deep learning, the GUI version is recommended.
 
+Firstly, enter the bash command directory by
+```bash
+cd PATH_TO_DEEPETPICKER/bin
+```
+
+where `PATH_TO_DEEPETPICKER` is the corresponding directory where the code located.
+
 ##  Preprocessing
 
 ```bash

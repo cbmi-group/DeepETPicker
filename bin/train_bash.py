@@ -28,6 +28,7 @@ if __name__ == '__main__':
     args.test_use_pad = True
     args.meanPool_NMS = True
     args.f_maps = [24, 48, 72, 108]
+    args.num_classes = cfg['num_cls']
     train_cls_num = cfg['num_cls']
     if args.num_classes == 1:
         args.use_sigmoid = True
