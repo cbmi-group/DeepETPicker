@@ -1,5 +1,4 @@
 *.DS_Store
 *.git
 *.idea
-./dataset/preprocess.py
-./bin/bash_command.sh
+/bin/bash_command.sh
