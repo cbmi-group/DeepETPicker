@@ -19,17 +19,18 @@ class BaseOptions():
         # dataloader parameters
         self.parser.add_argument('--block_size', help='block size', type=int, default=72)
         self.parser.add_argument('--val_block_size', help='block size', type=int, default=0)
-        self.parser.add_argument('--random_num', help='random number', type=int, default=500)
+        self.parser.add_argument('--random_num', help='random number', type=int, default=0)
         self.parser.add_argument('--num_classes', help='number of classes', type=int, default=13)
         self.parser.add_argument('--use_bg', type=str2bool, help='whether use batch generator', default=False)
         self.parser.add_argument('--test_use_pad', type=str2bool, help='whether use coord conv', default=False)
         self.parser.add_argument('--pad_size', nargs='+', type=int, default=[12])
         self.parser.add_argument('--data_split', nargs='+', type=int, default=[0, 1, 0, 1, 0, 1])
         self.parser.add_argument('--configs', type=str, default='')
+        self.parser.add_argument('--pre_configs', type=str, default='')
         self.parser.add_argument('--train_configs', type=str, default='')
         self.parser.add_argument('--ck_mode', type=str, default='')
         self.parser.add_argument('--val_configs', type=str, default='')
-        self.parser.add_argument('--loader_type', type=str, default='dataloader', help="whether use DynamicLoad",
+        self.parser.add_argument('--loader_type', type=str, default='dataloader_DynamicLoad', help="whether use DynamicLoad",
                                  # choices=["dataloader", "dataloader_DynamicLoad",
                                  #          'dataloader_DynamicLoad_CellSeg',
                                  #          "dataloader_DynamicLoad_Semi"]
@@ -173,10 +174,13 @@ class BaseOptions():
         self.parser.add_argument('--out_name', type=str, default='TestRes',
                                  help='file name for saving the predicted coordinates')
 
+        self.parser.add_argument('--train_set_ids', type=str, default="0")
+        self.parser.add_argument('--val_set_ids', type=str, default="0")
+        self.parser.add_argument('--cfg_save_path', type=str, default=".")
         # optim parameters
-        self.parser.add_argument('--optim', type=str, default='SGD')
-        self.parser.add_argument('--scheduler', type=str, default=None)
-        self.parser.add_argument('--weight_decay', type=float, default=0.001, help="torch.optim: weight decay")
+        self.parser.add_argument('--optim', type=str, default='AdamW')
+        self.parser.add_argument('--scheduler', type=str, default='OneCycleLR')
+        self.parser.add_argument('--weight_decay', type=float, default=0.01, help="torch.optim: weight decay")
         self.parser.add_argument('--use_dilation', type=str2bool, default=False, help='Whether use dilation')
         self.parser.add_argument('--use_seg', type=str2bool, default=False, help='Whether use dilation')
         self.parser.add_argument('--use_eval', type=str2bool, default=False, help='Whether use dilation')

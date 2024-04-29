@@ -463,7 +463,7 @@ class Stats(QtWidgets.QMainWindow):
             self.train_config_save_path = f"{config_save_path}/{self.train_dsetName}.py"
             with open(self.train_config_save_path, 'w') as f:
                 f.write("train_configs=")
-                json.dump(self.train_configs, f)
+                json.dump(self.train_configs, f, separators=(',\n'+' '*len('train_configs={'), ': '))
             self.train_show_info(f"save train configs to '{config_save_path}/{self.train_dsetName}.py'")
 
     def train_loadConfigs(self):
@@ -483,7 +483,7 @@ class Stats(QtWidgets.QMainWindow):
         # config = importlib.import_module(f"{base_config}.{train_config_name}")
         # self.train_configs = config.train_configs
         with open(self.train_config_file, 'r') as f:
-            self.train_configs = json.loads(f.readline().lstrip('train_configs='))
+            self.train_configs = json.loads(''.join(f.readlines()).lstrip('train_configs='))
 
         self.train_dsetName = self.train_configs['dset_name']
         self.base_path = self.train_configs['base_path']
@@ -601,7 +601,7 @@ class Stats(QtWidgets.QMainWindow):
         # config = importlib.import_module(f"{base_config}.{train_config_name}")
         # self.train_configs = config.train_configs
         with open(self.train_config_file, 'r') as f:
-            self.train_configs = json.loads(f.readline().lstrip('train_configs='))
+            self.train_configs = json.loads(''.join(f.readlines()).lstrip('train_configs='))
 
         self.train_dsetName = self.train_configs['dset_name']
         self.base_path = self.train_configs['base_path']
@@ -832,7 +832,7 @@ class Stats(QtWidgets.QMainWindow):
             args.loader_type = 'dataloader_DynamicLoad'
             args.test_use_pad = True
             args.pad_size = [self.train_paddingSize]
-            args.test_mode = 'test_val'
+            args.test_mode = 'val'
             args.val_batch_size = self.train_batchSize
             args.val_block_size = self.train_patchSize
             args.scheduler = 'OneCycleLR'
@@ -889,7 +889,7 @@ class Stats(QtWidgets.QMainWindow):
             self.test_show_info(f"Load training configs: {self.train_config_file}")
 
         with open(self.train_config_file, 'r') as f:
-            self.train_configs = json.loads(f.readline().lstrip('train_configs='))
+            self.train_configs = json.loads(''.join(f.readlines()).lstrip('train_configs='))
 
         self.train_dsetName = self.train_configs['dset_name']
         self.base_path = self.train_configs['base_path']
@@ -1372,7 +1372,7 @@ class Stats(QtWidgets.QMainWindow):
         # self.preconfig = config.pre_config
 
         with open(self.c2l_config_file, 'r') as f:
-            self.preconfig = json.loads(f.readline().lstrip('pre_config='))
+            self.preconfig = json.loads(''.join(f.readlines()).lstrip('pre_config='))
 
         self.dset_name = self.preconfig["dset_name"]
         self.c2l_basePath = self.preconfig["base_path"],
@@ -1452,7 +1452,7 @@ class Stats(QtWidgets.QMainWindow):
         if self.cls_num == len(self.ocp_diameter.split(',')):
             with open(f"{config_save_path}/{self.dset_name}.py", 'w') as f:
                 f.write("pre_config=")
-                json.dump(pre_config, f)
+                json.dump(pre_config, f, separators=(',\n'+' '*len('pre_config={'), ': '))
             self.c2l_show_info(f"save configs to {config_save_path}, Finished!")
         else:
             self.c2l_show_info(f"The number of classes is not consistent with the 'Ocp diameter'")
@@ -1488,7 +1488,10 @@ class Stats(QtWidgets.QMainWindow):
             coords_gen_emit = EmittingStr()
             coords_gen_emit.textWritten.connect(self.c2l_show_info)
             thread = ThreadShowInfo(func=coords_gen_show,
-                                     args=(self.c2l_coordPath, self.coord_format, self.c2l_basePath, coords_gen_emit))
+                                     args=(self.c2l_coordPath,
+                                           self.coord_format,
+                                           self.c2l_basePath,
+                                           coords_gen_emit))
             thread.start()
             while not thread.isFinished():
                 pass
@@ -1497,8 +1500,11 @@ class Stats(QtWidgets.QMainWindow):
             norm_emit = EmittingStr()
             norm_emit.textWritten.connect(self.c2l_show_info)
             thread1 = ThreadShowInfo(func=norm_show,
-                                      args=(self.c2l_tomoFile, self.tomo_format, self.c2l_basePath, \
-                                            self.input_norm, norm_emit))
+                                      args=(self.c2l_tomoFile,
+                                            self.tomo_format,
+                                            self.c2l_basePath,
+                                            self.input_norm,
+                                            norm_emit))
             thread1.start()
             while not thread1.isFinished():
                 pass

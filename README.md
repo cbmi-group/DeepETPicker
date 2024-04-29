@@ -50,28 +50,31 @@ conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11
 pip install -r requirement.txt
 ```
 
-To use GUI packages with Linux, you will need to install the following extended dependencies for Qt. 
-1. For `CentOS`, to install packages, please do:
+- **if using GUI**
+	
+	To use GUI packages with Linux, you will need to install the following extended dependencies for Qt. 
+	1. For `CentOS`, to install packages, please do:
+		```bash
+		sudo yum install -y mesa-libGL libXext libSM libXrender fontconfig xcb-util-wm xcb-util-image xcb-util-keysyms xcb-util-renderutil libxkbcommon-x11
+		```
+
+	2. For `Ubuntu`, to install packages, please do:
+		```bash
+		sudo apt-get install -y libgl1-mesa-glx libglib2.0-dev libsm6 libxrender1 libfontconfig1 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-shape0 libxcb-xinerama0 libxcb-xkb1 libxkbcommon-x11-dev libdbus-1-3
+		```
+
+
+	To run the DeepETpicker, please do:
+
 	```bash
-	sudo yum install -y mesa-libGL libXext libSM libXrender fontconfig xcb-util-wm xcb-util-image xcb-util-keysyms xcb-util-renderutil libxkbcommon-x11
+	conda activate deepetpicker
+	python PATH_TO_DEEPETPICKER/main.py
 	```
 
-2. For `Ubuntu`, to install packages, please do:
-	```bash
-	sudo apt-get install -y libgl1-mesa-glx libglib2.0-dev libsm6 libxrender1 libfontconfig1 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-shape0 libxcb-xinerama0 libxcb-xkb1 libxkbcommon-x11-dev libdbus-1-3
-	```
+	Note: `PATH_TO_DEEPETPICKER` is the corresponding directory where the code located.
+- **Non GUI version**
 
-
-To run the DeepETpicker, please do:
-
-```bash
-conda activate deepetpicker
-python PATH_TO_DEEPETPICKER/main.py
-```
-
-Note: `PATH_TO_DEEPETPICKER` is the corresponding directory where the code located.
-
-
+	In addition to the `GUI version` of DeepETPicker, we also provide a `non-GUI version` of DeepETPicker for people who understand python and deep-learning. It consists of four processes, including `preprocessing`, `train config generation`, `training` and `testing`. A sample tutorial can be found in `.bin/bash_command.md`.
 
 #### **Option 2：Using docker**
 

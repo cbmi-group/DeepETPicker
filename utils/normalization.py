@@ -32,7 +32,7 @@ class InputNorm():
                 data = np.array(gm.data).astype(np.float)
             except:
                 data = np.array(gm.data).astype(np.float32)
-            print(data.shape)
+            # print(data.shape)
             if self.norm_type == 'standardization':
                 data -= data.mean()
                 data /= data.std()
@@ -78,5 +78,6 @@ def norm_show(args):
         stdout.write('Normalization Exception!')
         return 0
     """
-    sys.stderr = save_stderr
-    sys.stdout = save_stdout
+    if stdout is not None:
+        sys.stderr = save_stderr
+        sys.stdout = save_stdout

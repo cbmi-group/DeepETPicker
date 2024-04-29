@@ -2,3 +2,4 @@
 *.git
 *.idea
 ./dataset/preprocess.py
+bin/bash_command.sh

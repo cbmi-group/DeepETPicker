@@ -287,7 +287,7 @@ class ExtResNetBlock(nn.Module):
         self.conv2 = SingleConv(out_channels, out_channels, norm=norm, act=act)
         # remove non-linearity from the 3rd convolution since it's going to be applied after adding the residual
         self.conv3 = SingleConv(out_channels, out_channels, norm=norm, act=act)
-        self.non_linearity = nn.ELU(inplace=True)
+        self.non_linearity = nn.ELU(inplace=False)
 
     def forward(self, x):
         # apply first convolution and save the output as a residual
@@ -311,7 +311,7 @@ class ExtResNetBlock_att(nn.Module):
         self.conv2 = SplAtConv3d(out_channels, out_channels // 2, norm_layer=norm)
         # remove non-linearity from the 3rd convolution since it's going to be applied after adding the residual
         self.conv3 = SplAtConv3d(out_channels, out_channels // 2, norm_layer=norm)
-        self.non_linearity = nn.ELU(inplace=True)
+        self.non_linearity = nn.ELU(inplace=False)
 
     def forward(self, x):
         # apply first convolution and save the output as a residual
@@ -350,7 +350,7 @@ class ExtResNetBlock_lightWeight(nn.Module):
         self.conv2 = SingleConv_lightWeight(out_channels, out_channels, lw_kernel=lw_kernel)
         # remove non-linearity from the 3rd convolution since it's going to be applied after adding the residual
         self.conv3 = SingleConv_lightWeight(out_channels, out_channels, lw_kernel=lw_kernel)
-        self.non_linearity = nn.ELU(inplace=True)
+        self.non_linearity = nn.ELU(inplace=False)
 
     def forward(self, x):
         # apply first convolution and save the output as a residual
@@ -446,7 +446,7 @@ class SplAtConv3d(Module):
         self.use_bn = norm_layer is not None
         if self.use_bn:
             self.bn0 = norm_layer(channels * radix)
-        self.relu = ReLU(inplace=True)
+        self.relu = ReLU(inplace=False)
         self.fc1 = Conv3d(channels, inter_channels, 1, groups=self.cardinality)
         if self.use_bn:
             self.bn1 = norm_layer(inter_channels)

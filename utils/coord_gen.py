@@ -38,8 +38,8 @@ def coords_gen(coord_path, coord_format, base_dir):
         tmp = np.array(num_all)[:i+1].sum()
         print("0 to %d:" % (i+1), tmp)
         str_ += "%d|" % tmp
-    print(str_)
-    print(list(enumerate(num_all)))
+    # print(str_)
+    # print(list(enumerate(num_all)))
 
     # gen num_name.csv
     num_name = np.array([num_all]).transpose()
@@ -63,10 +63,13 @@ def coords_gen_show(args):
     try:
         coords_gen(coord_path, coord_format, base_dir)
         print('Coord generation finished!')
+        print('*' * 100)
     except:
         stdout.flush()
         stdout.write('Coordinates Generation Exception!')
+        print('*' * 100)
         return 0
 
-    sys.stderr = save_stderr
-    sys.stdout = save_stdout
+    if stdout is not None:
+        sys.stderr = save_stderr
+        sys.stdout = save_stdout

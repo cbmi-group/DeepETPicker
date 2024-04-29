@@ -34,18 +34,18 @@ class UNetExperiment(pl.LightningModule):
 
         if len(args.configs) > 0:
             with open(args.configs, 'r') as f:
-                self.cfg = json.loads(f.readline().lstrip('train_configs='))
+                self.cfg = json.loads(''.join(f.readlines()).lstrip('train_configs='))
         else:
             self.cfg = {}
         if len(args.train_configs) > 0:
             with open(args.train_configs, 'r') as f:
-                self.train_cfg = json.loads(f.readline().lstrip('train_configs='))
+                self.train_cfg = json.loads(''.join(f.readlines()).lstrip('train_configs='))
         else:
             self.train_cfg = self.cfg
 
         if len(args.val_configs) > 0:
             with open(args.val_configs, 'r') as f:
-                self.val_config = json.loads(f.readline().lstrip('train_configs='))
+                self.val_config = json.loads(''.join(f.readlines()).lstrip('train_configs='))
         else:
             self.val_cfg = self.cfg
 
@@ -332,7 +332,7 @@ def train_func(args, stdout=None):
                                               monitor=f'cls_pr_alpha{args.prf1_alpha:.1f}' if args.num_classes == 1 else 'cls_f1',
                                               mode='max')
     else:
-        checkpoint_callback = ModelCheckpoint(save_top_k=15,
+        checkpoint_callback = ModelCheckpoint(save_top_k=1,
                                               monitor='val_loss',
                                               mode='min')
 
@@ -369,14 +369,16 @@ def train_func(args, stdout=None):
         print('Training Finished')
         print(f'Training pid:{os.getpid()}')
         print('*' * 100)
-        sys.stderr = save_stderr
-        sys.stdout = save_stdout
         torch.cuda.empty_cache()
+        if stdout is not None:
+            sys.stderr = save_stderr
+            sys.stdout = save_stdout
         return os.getpid()
     except:
-        stdout.flush()
-        stdout.write('Training Exception!')
-        sys.stderr = save_stderr
-        sys.stdout = save_stdout
         torch.cuda.empty_cache()
+        if stdout is not None:
+            stdout.flush()
+            stdout.write('Training Exception!')
+            sys.stderr = save_stderr
+            sys.stdout = save_stdout
         return os.getpid()

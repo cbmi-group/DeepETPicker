@@ -5,6 +5,7 @@ import os
 import numpy as np
 from glob import glob
 import sys
+import traceback
 
 def gaussian3D(shape, sigma=1):
     l, m, n = [(ss - 1.) / 2. for ss in shape]
@@ -26,7 +27,10 @@ class Coord_to_Label():
         self.tomo_format = tomo_format
         self.num_cls = num_cls
         self.label_type = label_type
-        self.label_diameter = [int(i) for i in label_diameter.split(',')]
+        if not isinstance(label_diameter, int):
+            self.label_diameter = [int(i) for i in label_diameter.split(',')]
+        else:
+            self.label_diameter = [label_diameter]
 
         if 'ocp' in self.label_type.lower():
             self.label_path = os.path.join(self.base_path, self.label_type)
@@ -41,7 +45,7 @@ class Coord_to_Label():
     def single_handle(self, i):
         self.tomo_file = f"{self.tomo_path}/{self.names[i]}"
         data_file = mrcfile.open(self.tomo_file, permissive=True)
-        print(os.path.join(self.label_path, self.names[i]))
+        # print(os.path.join(self.label_path, self.names[i]))
         label_file = mrcfile.new(os.path.join(self.label_path, self.names[i]),
                                  overwrite=True)
 
@@ -113,7 +117,7 @@ class Coord_to_Label():
 
         data_file.close()
         label_file.close()
-        print('work %s done' % i)
+        # print('work %s done' % i)
         # return 'work %s done' % i
 
     def gen_labels(self):
@@ -134,20 +138,37 @@ def label_gen_show(args):
         sys.stderr = stdout
 
     try:
-        label_gen = Coord_to_Label(base_path, coord_path, coord_format, tomo_path, tomo_format, \
-                    num_cls, label_type, label_diameter)
+        label_gen = Coord_to_Label(base_path,
+                                   coord_path,
+                                   coord_format,
+                                   tomo_path,
+                                   tomo_format,
+                                   num_cls,
+                                   label_type,
+                                   label_diameter)
         label_gen.gen_labels()
         if 'ocp' not in label_type:
             print('Label generation finished!')
+            print('*' * 100)
         else:
             print('Occupancy generation finished!')
-    except:
-        stdout.flush()
-        stdout.write('Label Generation Exception!')
+            print('*' * 100)
+    except Exception as ex:
+        term = 'Occupancy' if 'ocp' in label_type else 'Label'
+        if stdout is not None:
+            stdout.flush()
+            stdout.write(f"{ex}")
+            stdout.write(f'{term} Generation Exception!')
+            print('*' * 100)
+        else:
+            traceback.print_exc()
+            #print(f"{ex}")
+            print(f'{term} Generation Exception!')
+            print('*' * 100)
         return 0
-
-    sys.stderr = save_stderr
-    sys.stdout = save_stdout
+    if stdout is not None:
+        sys.stderr = save_stderr
+        sys.stdout = save_stdout
 
 
 class Coord_to_Label_v1():

@@ -111,6 +111,7 @@ class Dataset_ClsBased(data.Dataset):
             self.data_range = np.arange(data_split[2], data_split[3])
         else:  # test or test_val or val_v1
             self.data_range = np.arange(data_split[4], data_split[5])
+        print(f"data_range:{self.data_range}")
 
         # print(f'data_range:{self.data_range}')
         self.shift = block_size // 2  # bigger than self.radius to cover full particle

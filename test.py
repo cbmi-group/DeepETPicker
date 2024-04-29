@@ -31,7 +31,7 @@ def test_func(args, stdout=None):
         # load config parameters
         if len(args.configs) > 0:
             with open(args.configs, 'r') as f:
-                cfg = json.loads(f.readline().lstrip('train_configs='))
+                cfg = json.loads(''.join(f.readlines()).lstrip('train_configs='))
 
         start_time = time.time()
         args.data_split[-2] = test_idx
@@ -212,6 +212,7 @@ def test_func(args, stdout=None):
     print('*' * 100)
     print('Testing Finished!')
     print('*' * 100)
-    sys.stdout = save_stdout
-    sys.stderr = save_stderr
+    if stdout is not None:
+        sys.stdout = save_stdout
+        sys.stderr = save_stderr
 
