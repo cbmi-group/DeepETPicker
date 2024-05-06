@@ -361,7 +361,6 @@ def train_func(args, stdout=None):
                      sync_batchnorm=True,
                      resume_from_checkpoint=args.checkpoints)
 
-    runner.fit(model)
 
     try:
         runner.fit(model)
