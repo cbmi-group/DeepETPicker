@@ -40,6 +40,7 @@ def gauss_filter(kernel_size=3, sigma=1):
     return gauss_filter
 
 
+
 def stretch(tomo):
     tomo = (tomo - np.min(tomo)) / (np.max(tomo) - np.min(tomo)) * 255
     return np.array(tomo).astype(np.uint8)

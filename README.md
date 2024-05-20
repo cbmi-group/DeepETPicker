@@ -182,8 +182,8 @@ Detailed tutorials for two sample datasets of [SHREC2021](https://github.com/cbm
 		- Tomogram format: .mrc or .rec
 		- Number of classes:  multiple classes of macromolecules also can be localized separately
 	- `Output`
-		- Label diameter(in voxels):  smaller than the average diameter of the targets
-		- Ocp diameter(in voxels): this value can be the average diameter of the targets. For particles of multi-classes, their diameters should be separated with a comma.
+		- Label diameter(in voxels): the diameter of generated weak label, which is usually smaller than the average diameter of the particles. Empirically, you can set it as large as possible but should be smaller than the real diameter.
+		- Ocp diameter(in voxels):  the real diameter of the particles. Empirically, in order to obtain good selection results, we recommend that the particle size is adjusted to the range of 20~30 by binning operation. For particles of multi-classes, their diameters should be separated with a comma.
 		- Configs: if you click 'Save configs', it would be the path to the file which contains all the parameters filled in this page  
 
 
