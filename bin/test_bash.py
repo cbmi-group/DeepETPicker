@@ -55,6 +55,16 @@ if __name__ == '__main__':
     args.num_classes = train_cls_num
 
     # test_idxs
+    dset_list = np.array(
+        [i[:-(len(i.split('.')[-1]) + 1)] for i in os.listdir(cfg['tomo_path']) if cfg['tomo_format'] in i])
+    dset_num = dset_list.shape[0]
+    num_name = np.concatenate([np.arange(dset_num).reshape(-1, 1), dset_list.reshape(-1, 1)], axis=1)
+    np.savetxt(os.path.join(cfg['tomo_path'], 'num_name.csv'),
+               num_name,
+               delimiter='\t',
+               fmt='%s',
+               newline='\n')
+
     # tomo_list = [i for i in os.listdir(cfg[f"{cfg['base_path']}/data_std"]) if cfg['tomo_format'] in i]
     tomo_list = np.loadtxt(f"{cfg['base_path']}/data_std/num_name.csv",
                            delimiter='\t',

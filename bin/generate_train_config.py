@@ -32,7 +32,8 @@ if __name__ == "__main__":
     train_config['lr'] = args.learning_rate
     train_config['max_epochs'] = args.max_epoch
     train_config['seg_thresh'] = args.threshold
-    train_config['gpu_ids'] = ''.join([str(i) for i in args.gpu_id])
+    train_config['gpu_ids'] = ','.join([str(i) for i in args.gpu_id])
+    print(train_config['gpu_ids'])
 
 
     with open(f"{args.cfg_save_path}/{args.dset_name}.py", 'w') as f:
