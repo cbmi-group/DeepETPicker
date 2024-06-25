@@ -1287,7 +1287,7 @@ class Stats(QtWidgets.QMainWindow):
         self.c2l_show_info(f"Normalization type: {self.input_norm}")
 
     def openBasePath(self):
-        self.c2l_basePath = QFileDialog.getExistingDirectory(self, 'Select the coordination path')
+        self.c2l_basePath = QFileDialog.getExistingDirectory(self, 'Select the base path')
         if self.c2l_basePath != "":
             self.ui.edit_base_path.setText(self.c2l_basePath)
             self.c2l_show_info(f"Base dir: {self.c2l_basePath}")
