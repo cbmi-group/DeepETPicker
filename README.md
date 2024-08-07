@@ -186,7 +186,6 @@ Detailed tutorials for two sample datasets of [SHREC2021](https://github.com/cbm
 		- Ocp diameter(in voxels):  the real diameter of the particles. Empirically, in order to obtain good selection results, we recommend that the particle size is adjusted to the range of 20~30 by binning operation. For particles of multi-classes, their diameters should be separated with a comma.
 		- Configs: if you click 'Save configs', it would be the path to the file which contains all the parameters filled in this page  
 	
-	Note: After converting the coordinates to `*.coords`, one can get the coordinates with relion4 format using the script in `https://github.com/cbmi-group/DeepETPicker/blob/main/utils/coords_to_relion4.py` directly.
 
 ### **Training of DeepETPicker**
 	
@@ -238,6 +237,9 @@ The predicted coordinates with extension `*.coords` has four columns: `class_id,
 
 - Coords path: the path of coordinates data predicted by well-trained DeepETPicker.
 - Output format: three formats can be converted, including `*.box` for EMAN2, `*.star` for RELION, `*.coords` for RELION.
+
+	
+Note: After converting the coordinates to `*.coords`, one can get the coordinates with relion4 format using the script in `https://github.com/cbmi-group/DeepETPicker/blob/main/utils/coords_to_relion4.py` directly.
 
 
 ### **Particle visualization and mantual picking**
