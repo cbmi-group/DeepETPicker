@@ -185,7 +185,8 @@ Detailed tutorials for two sample datasets of [SHREC2021](https://github.com/cbm
 		- Label diameter(in voxels): the diameter of generated weak label, which is usually smaller than the average diameter of the particles. Empirically, you can set it as large as possible but should be smaller than the real diameter.
 		- Ocp diameter(in voxels):  the real diameter of the particles. Empirically, in order to obtain good selection results, we recommend that the particle size is adjusted to the range of 20~30 by binning operation. For particles of multi-classes, their diameters should be separated with a comma.
 		- Configs: if you click 'Save configs', it would be the path to the file which contains all the parameters filled in this page  
-
+	
+	Note: After converting the coordinates to `*.coords`, one can get the coordinates with relion4 format using the script in `https://github.com/cbmi-group/DeepETPicker/blob/main/utils/coords_to_relion4.py` directly.
 
 ### **Training of DeepETPicker**
 	
